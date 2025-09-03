@@ -4,6 +4,9 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include "MLX42/MLX42.h"
+#include <stdio.h>
+#include "color.h"
 
 #define WIN_W 800
 #define WIN_H 600
