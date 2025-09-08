@@ -28,26 +28,26 @@ static void on_key(mlx_key_data_t keydata, void *param)
 // 		pixels[i] = color;
 // }
 
-static inline void put_pixel(mlx_image_t *img, int x, int y, uint32_t color)
-{
-	if ((unsigned)x >= img->width || (unsigned)y >= img->height)
-		return;
-	((uint32_t*)img->pixels)[(size_t)y * img->width + (size_t)x] = color;
-}
+// static inline void put_pixel(mlx_image_t *img, int x, int y, uint32_t color)
+// {
+// 	if ((unsigned)x >= img->width || (unsigned)y >= img->height)
+// 		return ;
+// 	((uint32_t*)img->pixels)[(size_t)y * img->width + (size_t)x] = color;
+// }
 
-static void draw_test_gradient(mlx_image_t *img)
-{
-	for (int y = 0; y < (int)img->height; ++y)
-	{
-		for (int x = 0; x < (int)img->width; ++x)
-		{
-			uint8_t r = (uint8_t)(255.0f * (float)x / (float)(img->width - 1));
-			uint8_t g = (uint8_t)(255.0f * (float)y / (float)(img->height - 1));
-			uint8_t b = 64; // constante para diferenciar canales
-			put_pixel(img, x, y, rgba_u32(r, g, b, 255));
-		}
-	}
-}
+// static void draw_test_gradient(mlx_image_t *img)
+// {
+// 	for (int y = 0; y < (int)img->height; ++y)
+// 	{
+// 		for (int x = 0; x < (int)img->width; ++x)
+// 		{
+// 			uint8_t r = (uint8_t)(255.0f * (float)x / (float)(img->width - 1));
+// 			uint8_t g = (uint8_t)(255.0f * (float)y / (float)(img->height - 1));
+// 			uint8_t b = 64; // constante para diferenciar canales
+// 			put_pixel(img, x, y, rgba_u32(r, g, b, 255));
+// 		}
+// 	}
+// }
 
 int main(int argc, char **argv)
 {
@@ -62,11 +62,23 @@ int main(int argc, char **argv)
 		return (write(2, "Error\nimage creation failed\n", 28), 1);
 	if (mlx_image_to_window(mrt_ctx.mlx, mrt_ctx.img, 0, 0) < 0)
 		return (write(2, "Error\nimage to window failed\n", 30), 1);
-//	clear_image(mrt_ctx.img, 0x000000FF);
-	draw_test_gradient(mrt_ctx.img);
+	// clear_image(mrt_ctx.img, 0x000000FF);
+	// draw_test_gradient(mrt_ctx.img);
+	draw_background(mrt_ctx.img);
+	// put_pixel(mrt_ctx.img, 0, 0, rgba_u32(255, 0, 0, 255));                  // rojo arriba-izquierda
+	// put_pixel(mrt_ctx.img, WIN_W-1, 0, rgba_u32(0, 255, 0, 255));            // verde arriba-derecha
+	// put_pixel(mrt_ctx.img, 0, WIN_H-1, rgba_u32(0, 0, 255, 255));            // azul abajo-izquierda
+	// put_pixel(mrt_ctx.img, WIN_W-1, WIN_H-1, rgba_u32(255, 255, 255, 255));  // blanco abajo-derecha
 	mlx_key_hook(mrt_ctx.mlx, on_key, &mrt_ctx);
 	mlx_close_hook(mrt_ctx.mlx, (mlx_closefunc)NULL, NULL); // opcional
 	mlx_loop(mrt_ctx.mlx);
 	mlx_terminate(mrt_ctx.mlx);
 	return 0;
 }
+
+/*
+mlx_delete_texture
+mlx_delete_xpm42
+mlx_delete_image
+mlx_terminate
+*/

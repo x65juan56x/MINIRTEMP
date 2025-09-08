@@ -3,13 +3,14 @@ CC			:= cc
 CFLAGS		:= -Wall -Wextra -Werror
 
 INCS_DIR	:= include
-SRCS		:= main.c
+SRCS		:= main.c \
+			src/color.c \
+			src/vec3.c \
+			src/ray.c \
+			src/renderer.c
+
 OBJS		:= $(SRCS:.c=.o)
 
-# MLX42 (GLFW) configuration
-# By default we expect headers in ./MLX42/include and lib in ./MLX42/build
-# Override with:
-#   make MLX42_INC=/path/to/MLX42/include MLX42_LIB=/path/to/MLX42/build
 MLX42_INC	?= MLX42/include
 MLX42_LIB	?= MLX42/build
 MLX42_FLAGS := -L$(MLX42_LIB) -lmlx42 -ldl -lglfw -lm -lpthread
