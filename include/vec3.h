@@ -24,4 +24,4 @@ float	v3_len2(t_vec3 a);
 float	v3_len(t_vec3 a);
 t_vec3	v3_norm(t_vec3 a);
 
-#endif // VEC3_H
+#endif

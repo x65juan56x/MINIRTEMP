@@ -17,4 +17,4 @@
 // ε para evitar self-intersections (se usará más adelante en ray tracing)
 #define EPSILON 1e-4f
 
-#endif // MINIRT_H
+#endif
