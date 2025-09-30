@@ -11,7 +11,7 @@ static inline float deg2rad(float deg)
 	return deg * 0.01745329251994329577f; // PI/180
 }
 
-void camera_setup(t_camera* cam, uint32_t w, uint32_t h, float vfov_deg)
+void camera_setup(t_rcamera* cam, uint32_t w, uint32_t h, float vfov_deg)
 {
 	// Construye una cámara pinhole simple en el origen mirando hacia -Z.
 	// - w, h: tamaño del framebuffer para calcular aspect ratio.
@@ -64,7 +64,7 @@ void draw_background(mlx_image_t *img)
 	//  - Construye un rayo desde el origen de la cámara hacia el punto del plano de imagen.
 	//  - Normaliza la dirección y usa su componente y para mezclar entre blanco y azul.
 	//  - Escribe el color resultante en el framebuffer.
-	t_camera	cam;
+	t_rcamera	cam;
 	int			y;
 	int			x;
 

@@ -1,38 +1,21 @@
 # miniRT
 My first RayTracer with MiniLibX
 
-## RESOURCES
-
-- https://www.youtube.com/watch?v=H5TB2l7zq6s&ab_channel=Graphicsin5Minutes
-- https://www.youtube.com/watch?v=mTOllvinv-U&ab_channel=Graphicsin5Minutes
-- https://www.youtube.com/watch?v=tUh6gCx08LI&ab_channel=Graphicsin5Minutes
-
-- https://raytracing.github.io/
-- https://github.com/RayTracing/raytracing.github.io
-
-- https://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-overview/light-transport-ray-tracing-whitted.html
-- https://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-generating-camera-rays/definition-ray.html
-- https://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/parametric-and-implicit-surfaces.html
-- https://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-rendering-a-triangle/why-are-triangles-useful.html
-
-- https://www.youtube.com/watch?v=gsZiJeaMO48&ab_channel=Josh%27sChannel
-
-
 ## Subject
 
 ### Mandatory part - miniRT
 
 - Program name `miniRT`
 - Turn in files: All your files
-- Makefile `all`, `clean`, `fclean`, `re`, `bonus`
+- Makefile: `all`, `clean`, `fclean`, `re`, `bonus`
 - Arguments: a scene in format `*.rt`
-- External functs.
+- External functs:
 	- open, close, read, write, printf, malloc, free, perror, strerror, exit.
 	- All functions of the math library. (Man page: man math.h or man 3 math. Don’t forget to compile with the `-lm` flag).
 	- All functions of the MinilibX library.
 	- gettimeofday()
-- Libft authorized Yes
-- Description The goal of your program is to generate images using the Raytracing protocol. Those computer-generated images will each represent a scene, as seen from a specific angle and position, defined by simple geometric objects, and each with its own lighting system.
+- Libft authorized: Yes
+- Description: The goal of your program is to generate images using the Raytracing protocol. Those computer-generated images will each represent a scene, as seen from a specific angle and position, defined by simple geometric objects, and each with its own lighting system.
 
 #### The constraints are as follows:
 

@@ -1,4 +1,6 @@
 #include "include/minirt.h"
+#include "include/parser.h"
+#include "include/scene.h"
 
 typedef struct s_mrt_ctx
 {
@@ -49,36 +51,45 @@ static void on_key(mlx_key_data_t keydata, void *param)
 // 	}
 // }
 
-int main(int argc, char **argv)
-{
-	(void)argc; (void)argv;
+// int main(int argc, char **argv)
+// {
+// 	t_scene scene;
+// 	if (argc >= 2)
+// 	{
+// 		t_parse_result pr = parse_scene(argv[1], &scene);
+// 			if (!pr.ok)
+// 			{
+// 				if (pr.line > 0)
+// 					printf("Error\nParser:%s:%d: %s\n", argv[1], pr.line, pr.message ? pr.message : "");
+// 				else
+// 					printf("Error\nParser:%s: %s\n", argv[1], pr.message ? pr.message : "");
+// 				parse_result_free(&pr);
+// 				return 1;
+// 			}
+// 		parse_result_free(&pr);
+// 	}
 
-	t_mrt_ctx mrt_ctx = {0};
-	mrt_ctx.mlx = mlx_init(WIN_W, WIN_H, "miniRT", false);
-	if (!mrt_ctx.mlx)
-		return (write(2, "Error\nmlx_init failed\n", 20), 1);
-	mrt_ctx.img = mlx_new_image(mrt_ctx.mlx, WIN_W, WIN_H);
-	if (!mrt_ctx.img)
-		return (write(2, "Error\nimage creation failed\n", 28), 1);
-	if (mlx_image_to_window(mrt_ctx.mlx, mrt_ctx.img, 0, 0) < 0)
-		return (write(2, "Error\nimage to window failed\n", 30), 1);
-	// clear_image(mrt_ctx.img, 0x000000FF);
-	// draw_test_gradient(mrt_ctx.img);
-	draw_background(mrt_ctx.img);
-	// put_pixel(mrt_ctx.img, 0, 0, rgba_u32(255, 0, 0, 255));                  // rojo arriba-izquierda
-	// put_pixel(mrt_ctx.img, WIN_W-1, 0, rgba_u32(0, 255, 0, 255));            // verde arriba-derecha
-	// put_pixel(mrt_ctx.img, 0, WIN_H-1, rgba_u32(0, 0, 255, 255));            // azul abajo-izquierda
-	// put_pixel(mrt_ctx.img, WIN_W-1, WIN_H-1, rgba_u32(255, 255, 255, 255));  // blanco abajo-derecha
-	mlx_key_hook(mrt_ctx.mlx, on_key, &mrt_ctx);
-	mlx_close_hook(mrt_ctx.mlx, (mlx_closefunc)NULL, NULL); // opcional
-	mlx_loop(mrt_ctx.mlx);
-	mlx_terminate(mrt_ctx.mlx);
-	return 0;
-}
+// 	t_mrt_ctx mrt_ctx = {0};
+// 	mrt_ctx.mlx = mlx_init(WIN_W, WIN_H, "miniRT", false);
+// 	if (!mrt_ctx.mlx)
+// 		return (write(2, "Error\nmlx_init failed\n", 20), 1);
+// 	mrt_ctx.img = mlx_new_image(mrt_ctx.mlx, WIN_W, WIN_H);
+// 	if (!mrt_ctx.img)
+// 		return (write(2, "Error\nimage creation failed\n", 28), 1);
+// 	if (mlx_image_to_window(mrt_ctx.mlx, mrt_ctx.img, 0, 0) < 0)
+// 		return (write(2, "Error\nimage to window failed\n", 30), 1);
+// 	// Render de fondo con rayos (cámara simple) como placeholder
+// 	// Próximo paso: usar `scene` para renderizado real.
+// 	draw_background(mrt_ctx.img);
+// 	// put_pixel(mrt_ctx.img, 0, 0, rgba_u32(255, 0, 0, 255));                  // rojo arriba-izquierda
+// 	// put_pixel(mrt_ctx.img, WIN_W-1, 0, rgba_u32(0, 255, 0, 255));            // verde arriba-derecha
+// 	// put_pixel(mrt_ctx.img, 0, WIN_H-1, rgba_u32(0, 0, 255, 255));            // azul abajo-izquierda
+// 	// put_pixel(mrt_ctx.img, WIN_W-1, WIN_H-1, rgba_u32(255, 255, 255, 255));  // blanco abajo-derecha
+// 	mlx_key_hook(mrt_ctx.mlx, on_key, &mrt_ctx);
+// 	mlx_close_hook(mrt_ctx.mlx, (mlx_closefunc)NULL, NULL); // opcional
+// 	mlx_loop(mrt_ctx.mlx);
+// 	mlx_terminate(mrt_ctx.mlx);
+// 	if (argc >= 2) scene_free(&scene);
+// 	return 0;
+// }
 
-/*
-mlx_delete_texture
-mlx_delete_xpm42
-mlx_delete_image
-mlx_terminate
-*/
